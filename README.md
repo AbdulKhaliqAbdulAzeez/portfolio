@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abdul Khaliq Abdul Azeez - Portfolio Site
 
-## Getting Started
+This is the central portfolio site for **Abdul Khaliq Abdul Azeez**, a Junior IT student at the New Jersey Institute of Technology pursuing a career in **Cloud Engineering**.
 
-First, run the development server:
+The portfolio showcases a range of projects focused on Linux administration, networking, automation, Infrastructure as Code (IaC), and secure systems work.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Projects Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Wealthwise AI Personal-Finance Advisor**: A full-stack Next.js/TypeScript application providing AI-driven financial guidance.
+- **AI-Powered Terraform Architect & Validator**: A cloud infrastructure tool that generates, validates, and security-scans Terraform code before creating GitHub Pull Requests.
+- **Raspberry Pi Music Server**: A home-lab project practiced in Linux administration and secure remote access via Tailscale.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Built With
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: [Next.js 15+](https://nextjs.org) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Deployment**: Configured for modern cloud platforms (Vercel/AWS/etc.)
 
-## Learn More
+## 📦 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Run the development server**:
+   ```bash
+   npm run dev -p 3001
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Open the site**:
+   Navigate to [http://localhost:3001](http://localhost:3001) to view the portfolio.
 
-## Deploy on Vercel
+## 📁 Repository Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/data/profile.ts`: The central data file containing all project details, skills, and bio information.
+- `src/components/`: Modular UI components for the various portfolio sections (Hero, Projects, Skills, etc.).
+- `demo.sh`: A master script (located in this directory) to launch all major projects in the IS219 suite for demo purposes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👨‍💻 About the Author
+
+Junior IT student at NJIT (Expected May 2027), focused on building reliable infrastructure and secure automation workflows.
+
+- **GitHub**: [AbdulKhaliqAbdulAzeez](https://github.com/AbdulKhaliqAbdulAzeez)
+- **LinkedIn**: [Abdul Khaliq Azeez](https://linkedin.com/in/abdul-khaliq-azeez/)
+- **Email**: [abdulkhailqabdulazeez@gmail.com](mailto:abdulkhailqabdulazeez@gmail.com)
