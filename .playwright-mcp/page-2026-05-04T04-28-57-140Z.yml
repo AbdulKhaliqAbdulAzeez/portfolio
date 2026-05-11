@@ -1,0 +1,57 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Zero-Trust API Traffic & Bot Monitor
+      - heading "Operator Console" [level=1] [ref=e7]
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - text: Sprint
+        - strong [ref=e10]: Sprint 2
+      - generic [ref=e11]:
+        - text: Stream
+        - strong [ref=e12]: live
+      - generic [ref=e13]: connected
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - heading "Live Event Feed" [level=2] [ref=e18]
+      - generic [ref=e19]: Last 0 trust decisions
+    - complementary [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - heading "Trust Score Summary" [level=2] [ref=e23]
+          - generic [ref=e24]: Since page load
+        - generic [ref=e25]:
+          - article [ref=e26]:
+            - text: Allow
+            - strong [ref=e27]: "0"
+          - article [ref=e28]:
+            - text: Throttle
+            - strong [ref=e29]: "0"
+          - article [ref=e30]:
+            - text: Block
+            - strong [ref=e31]: "0"
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "Service Health" [level=2] [ref=e34]
+          - generic [ref=e35]: Current runtime signals
+        - generic [ref=e36]:
+          - article [ref=e37]:
+            - generic [ref=e38]:
+              - strong [ref=e39]: proxy
+              - paragraph [ref=e40]: Primary trust gate and WebSocket event source
+            - generic [ref=e41]: connected
+          - article [ref=e42]:
+            - generic [ref=e43]:
+              - strong [ref=e44]: engine
+              - paragraph [ref=e45]: Waiting for engine health event
+            - generic [ref=e46]: unknown
+          - article [ref=e47]:
+            - generic [ref=e48]:
+              - strong [ref=e49]: api
+              - paragraph [ref=e50]: Downstream API remains behind the proxy trust gate
+            - generic [ref=e51]: protected
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - heading "Connection Notes" [level=2] [ref=e54]
+          - generic [ref=e55]: Live proxy telemetry
+        - paragraph [ref=e56]: Sprint 2 consumes the live proxy event stream over WebSocket. Trust decisions appear here in real time, and the connection status reflects reconnect attempts whenever the proxy becomes unavailable.

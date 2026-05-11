@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ask-gemini "prompt"
+  printf 'content' | ask-gemini "prompt about stdin"
+
+Sends a short direct prompt to Gemini CLI. If stdin is piped, it is included
+as context below the prompt.
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if ! command -v gemini >/dev/null 2>&1; then
+  echo "Error: gemini CLI was not found in PATH." >&2
+  exit 127
+fi
+
+prompt="${*:-}"
+stdin_content=""
+
+if [[ ! -t 0 ]]; then
+  stdin_content="$(cat)"
+fi
+
+if [[ -z "$prompt" && -z "$stdin_content" ]]; then
+  usage >&2
+  exit 2
+fi
+
+if [[ -n "$stdin_content" ]]; then
+  gemini <<EOF
+You are a concise coding scout for another coding agent.
+Keep the answer short, concrete, and useful.
+
+Prompt:
+$prompt
+
+Context from stdin:
+$stdin_content
+EOF
+else
+  gemini <<EOF
+You are a concise coding scout for another coding agent.
+Keep the answer short, concrete, and useful.
+
+$prompt
+EOF
+fi

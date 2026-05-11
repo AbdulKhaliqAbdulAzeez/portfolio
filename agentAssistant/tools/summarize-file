@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  summarize-file path/to/file
+
+Sends one file to Gemini and asks for a compact coding-agent summary focused on
+classes, methods, variables, dependencies, and likely edit points.
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if ! command -v gemini >/dev/null 2>&1; then
+  echo "Error: gemini CLI was not found in PATH." >&2
+  exit 127
+fi
+
+file="${1:-}"
+if [[ -z "$file" ]]; then
+  usage >&2
+  exit 2
+fi
+
+if [[ ! -f "$file" ]]; then
+  echo "Error: file not found: $file" >&2
+  exit 1
+fi
+
+gemini <<EOF
+You are a scout preparing context for Codex CLI.
+Summarize this file in 25 lines or fewer. Focus on:
+- Purpose of the file.
+- Important classes, methods, variables, fields, public APIs, and events.
+- External dependencies and project-specific types referenced.
+- Likely edit points for future coding tasks.
+- Risks, side effects, or tests to check.
+
+Do not rewrite the file. Do not produce broad architecture advice.
+
+File: $file
+
+\`\`\`
+$(sed -n '1,2000p' "$file")
+\`\`\`
+EOF

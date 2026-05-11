@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  find-related-files "task description"
+
+Asks Gemini to inspect the project file list and identify files likely related
+to the task. Output includes file, reason, and confidence.
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if ! command -v gemini >/dev/null 2>&1; then
+  echo "Error: gemini CLI was not found in PATH." >&2
+  exit 127
+fi
+
+task="${*:-}"
+if [[ -z "$task" ]]; then
+  usage >&2
+  exit 2
+fi
+
+if command -v rg >/dev/null 2>&1; then
+  file_list="$(rg --files \
+    -g '!build/**' \
+    -g '!dist/**' \
+    -g '!node_modules/**' \
+    -g '!bin/**' \
+    -g '!obj/**' \
+    | sed -n '1,1200p')"
+else
+  file_list="$(find . -type f \
+    ! -path './build/*' \
+    ! -path './dist/*' \
+    ! -path './node_modules/*' \
+    ! -path './bin/*' \
+    ! -path './obj/*' \
+    | sed 's#^\./##' \
+    | sed -n '1,1200p')"
+fi
+
+gemini <<EOF
+You are a file-discovery scout for Codex CLI.
+
+Task:
+$task
+
+Project file list:
+$file_list
+
+Return only a compact Markdown table with columns:
+File | Why it matters | Confidence
+
+Rules:
+- Pick at most 15 files.
+- Confidence must be High, Medium, or Low.
+- Prefer source files, config, tests, and docs likely to affect the task.
+- If the file list is insufficient, say what search terms Codex should run next.
+EOF

@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  review-diff
+  git diff | review-diff
+
+Sends a diff to Gemini and asks for obvious bugs, missing null checks, naming
+issues, and integration concerns. This is a scout review, not final approval.
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if ! command -v gemini >/dev/null 2>&1; then
+  echo "Error: gemini CLI was not found in PATH." >&2
+  exit 127
+fi
+
+if [[ ! -t 0 ]]; then
+  diff_content="$(cat)"
+else
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    diff_content="$(git diff -- .)"
+  else
+    echo "Error: not inside a git repo and no diff was piped to stdin." >&2
+    exit 1
+  fi
+fi
+
+if [[ -z "$diff_content" ]]; then
+  echo "No diff content to review."
+  exit 0
+fi
+
+gemini <<EOF
+You are doing a quick scout review before Codex performs final review.
+Look only for obvious, actionable issues.
+
+Review for:
+- Bugs or broken control flow.
+- Missing null checks or lifecycle/state issues.
+- Naming or API mismatch concerns.
+- Integration risks with existing code.
+- Missing tests or verification steps.
+
+Return:
+- Findings first, ordered by severity.
+- File/symbol references when visible in the diff.
+- Keep it under 60 lines.
+- Say "No obvious issues found" if nothing concrete appears.
+
+Diff:
+\`\`\`diff
+$diff_content
+\`\`\`
+EOF
