@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -13,6 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Abdul Khaliq Abdul Azeez | Cloud Engineering Portfolio",
   description:
     "Cloud engineering portfolio for Abdul Khaliq Abdul Azeez, a junior Information Technology student focused on Linux, networking, automation, Terraform, infrastructure as code, and secure systems.",

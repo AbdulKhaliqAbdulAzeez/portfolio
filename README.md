@@ -33,6 +33,29 @@ The portfolio showcases a range of projects focused on Linux administration, net
 3. **Open the site**:
    Navigate to [http://localhost:3001](http://localhost:3001) to view the portfolio.
 
+## 🚢 GitHub Pages Deployment
+
+This project deploys as a static Next.js export through GitHub Actions.
+
+1. In GitHub, open **Settings → Pages** for the repository.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main`, or run **Deploy Portfolio to GitHub Pages** manually from the Actions tab.
+
+The workflow builds the site with a Project Pages base path:
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/<repository-name>
+NEXT_PUBLIC_SITE_URL=https://<github-username>.github.io/<repository-name>
+```
+
+For a local Pages-mode verification build:
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/portfolio-site NEXT_PUBLIC_SITE_URL=https://example.github.io/portfolio-site npm run build:pages
+```
+
+If deployment fails, check the workflow logs first. Lint and build failures block publishing, and GitHub Pages must be configured to use **GitHub Actions** as the source.
+
 ## 📁 Repository Structure
 
 - `src/data/profile.ts`: The central data file containing all project details, skills, and bio information.

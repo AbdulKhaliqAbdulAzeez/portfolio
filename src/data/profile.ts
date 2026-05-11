@@ -1,4 +1,5 @@
 import type { Profile } from "@/types/profile";
+import { withBasePath } from "@/lib/paths";
 
 export const profile: Profile = {
   name: "Abdul Khaliq Abdul Azeez",
@@ -15,7 +16,7 @@ export const profile: Profile = {
   email: "abdulkhailqabdulazeez@gmail.com",
   github: "https://github.com/AbdulKhaliqAbdulAzeez",
   linkedin: "https://linkedin.com/in/abdul-khaliq-azeez/",
-  resume: "/resume.pdf",
+  resume: withBasePath("/resume.pdf"),
   summary:
     "My current path connects cloud engineering fundamentals with practical projects: Linux services, private networking, Next.js applications, AI-backed API routes, Terraform validation, security scanning, and GitHub-based review workflows.",
   headlineBullets: [

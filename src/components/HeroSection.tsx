@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { profile } from "@/data/profile";
+import { withBasePath } from "@/lib/paths";
 
 export function HeroSection() {
   return (
@@ -9,7 +10,7 @@ export function HeroSection() {
     >
       <div>
         <Image
-          src="/portfolioImage.png"
+          src={withBasePath("/portfolioImage.png")}
           alt={profile.name}
           width={324}
           height={324}

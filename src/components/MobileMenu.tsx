@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback, useRef, useState } from "react";
+import { withBasePath } from "@/lib/paths";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -154,7 +155,7 @@ export function MobileMenu() {
                 </a>
               ))}
               <a
-                href="/resume.pdf"
+                href={withBasePath("/resume.pdf")}
                 onClick={close}
                 className="mt-4 rounded-md border border-blue-400/50 px-4 py-3 text-center font-medium text-blue-100 transition hover:border-blue-300 hover:bg-blue-400/10 hover:text-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
               >

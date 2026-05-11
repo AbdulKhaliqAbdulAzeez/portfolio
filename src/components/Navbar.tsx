@@ -1,4 +1,5 @@
 import { MobileMenu } from "./MobileMenu";
+import { withBasePath } from "@/lib/paths";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -34,7 +35,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="/resume.pdf"
+            href={withBasePath("/resume.pdf")}
             className="rounded-md border border-blue-400/50 px-3 py-1.5 font-medium text-blue-100 transition hover:border-blue-300 hover:bg-blue-400/10 hover:text-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-slate-950"
           >
             Resume
