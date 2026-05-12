@@ -53,11 +53,7 @@ export const profile: Profile = {
     school: "New Jersey Institute of Technology",
     degree: "B.S. in Information Technology",
     expectedGraduation: "May 2027",
-    coursework: [
-      "Intro to Networking Technology",
-      "Information Design Techniques",
-      "Internet Applications",
-    ],
+    concentration: "Network and Information Security",
   },
   certifications: [
     {

@@ -8,7 +8,7 @@ export type Education = {
   school: string;
   degree: string;
   expectedGraduation: string;
-  coursework: string[];
+  concentration: string;
 };
 
 export type Certification = {

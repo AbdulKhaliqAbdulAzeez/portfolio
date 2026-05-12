@@ -15,17 +15,10 @@ export function EducationSection() {
         </h3>
         <p className="mt-2 text-slate-300">{education.degree}</p>
         <div className="mt-6">
-          <h4 className="font-mono text-sm text-amber-200">Coursework</h4>
-          <ul className="mt-3 grid gap-2 text-sm text-slate-300 sm:grid-cols-3">
-            {education.coursework.map((course) => (
-              <li
-                key={course}
-                className="rounded border border-slate-800 bg-slate-900/40 px-3 py-2"
-              >
-                {course}
-              </li>
-            ))}
-          </ul>
+          <h4 className="font-mono text-sm text-amber-200">Concentration</h4>
+          <p className="mt-3 rounded border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-slate-300">
+            {education.concentration}
+          </p>
         </div>
       </div>
     </Section>
